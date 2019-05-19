@@ -1,4 +1,4 @@
-# vuegallery
+# vuelearn
 
 ## Project setup
 ```
