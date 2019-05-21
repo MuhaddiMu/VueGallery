@@ -1,13 +1,17 @@
 import Vue from 'vue'
 import App from './App.vue'
-import router from './router'
-import './registerServiceWorker'
-import ArgonDashboard from './plugins/argon-dashboard'
+import Header from './components/Header.vue'
+
+import VS2 from 'vue-script2'
+Vue.use(VS2)
 
 Vue.config.productionTip = false
 
-Vue.use(ArgonDashboard)
 new Vue({
-  router,
-  render: h => h(App)
+  render: h => h(Header),
+}).$mount('#body')
+
+
+new Vue({
+  render: h => h(App),
 }).$mount('#app')
