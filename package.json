@@ -10,7 +10,9 @@
   "dependencies": {
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
-    "vue-script2": "^2.0.3"
+    "vue-easy-lightbox": "^0.3.10",
+    "vue-script2": "^2.0.3",
+    "vue-simple-lightbox": "^1.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.7.0",

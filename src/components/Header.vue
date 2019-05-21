@@ -1,5 +1,5 @@
 <template>
-    <body id="body" class="text-center">
+    <div class="text-center">
       
     <div class="d-flex h-100 p-3 mx-auto flex-column">
       <header class="masthead mb-auto text-center">
@@ -10,14 +10,7 @@
 
   <div class="container mt-4">
     <div class="row">
-      <div class="col-md-3 col-sm-4 col-6 Zoom"><a href="#"><img class="img-fluid" src="https://vuejsbook.com/img/vuejs/img1.jpg" /></a></div>
-      <div class="col-md-3 col-sm-4 col-6 Zoom"><a href="#"><img class="img-fluid" src="https://vuejsbook.com/img/vuejs/img2.jpg" /></a></div>
-      <div class="col-md-3 col-sm-4 col-6 Zoom"><a href="#"><img class="img-fluid" src="https://vuejsbook.com/img/vuejs/img3.jpg" /></a></div>
-      <div class="col-md-3 col-sm-4 col-6 Zoom"><a href="#"><img class="img-fluid" src="https://vuejsbook.com/img/vuejs/img4.jpg" /></a></div>
-      <div class="col-md-3 col-sm-4 col-6 Zoom"><a href="#"><img class="img-fluid" src="https://vuejsbook.com/img/vuejs/img5.jpg" /></a></div>
-      <div class="col-md-3 col-sm-4 col-6 Zoom"><a href="#"><img class="img-fluid" src="https://vuejsbook.com/img/vuejs/img6.jpg" /></a></div>
-      <div class="col-md-3 col-sm-4 col-6 Zoom"><a href="#"><img class="img-fluid" src="https://vuejsbook.com/img/vuejs/img7.jpg" /></a></div>
-      <div class="col-md-3 col-sm-4 col-6 Zoom"><a href="#"><img class="img-fluid" src="https://vuejsbook.com/img/vuejs/img8.jpg" /></a></div>
+      <div v-for="(Image, index) in Images" :key="index" class="col-md-3 col-sm-4 col-6 Zoom"><a><img class="img-fluid" :src="Image.Thumbnail" /></a></div>
     </div>
   </div>
 
@@ -27,22 +20,42 @@
         </div>
       </footer>
     </div>
-  </body>
+
+    <script2 src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script2>
+    <script2 src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script2>
+    <script2 src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script2>
+  </div>
 </template>
 
 <script>
+
+
+
 export default {
   name: 'Header',
-  props: {
-    msg: String
-  }, 
+  components: {
+
+  },
+  data(){
+    return {
+      Images: [
+          {Thumbnail: 'https://vuejsbook.com/img/vuejs/img1.jpg'},
+          {Thumbnail: 'https://vuejsbook.com/img/vuejs/img2.jpg'},
+          {Thumbnail: 'https://vuejsbook.com/img/vuejs/img3.jpg'},
+          {Thumbnail: 'https://vuejsbook.com/img/vuejs/img4.jpg'},
+          {Thumbnail: 'https://vuejsbook.com/img/vuejs/img5.jpg'},
+          {Thumbnail: 'https://vuejsbook.com/img/vuejs/img6.jpg'},
+          {Thumbnail: 'https://vuejsbook.com/img/vuejs/img7.jpg'},
+          {Thumbnail: 'https://vuejsbook.com/img/vuejs/img8.jpg'}
+      ]
+    }
+  },
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
 @import 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css';
-
 @import 'https://getbootstrap.com/docs/4.0/examples/cover/cover.css';
 
 img {
