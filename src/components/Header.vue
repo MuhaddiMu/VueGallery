@@ -10,9 +10,16 @@
 
   <div class="container mt-4">
     <div class="row">
-      <div v-for="(Image, index) in Images" :key="index" class="col-md-3 col-sm-4 col-6 Zoom"><a><img class="img-fluid" :src="Image.Thumbnail" /></a></div>
+      <div v-for="(Image, index) in Images" :key="index" @click="() => show(index)" class="col-md-3 col-sm-4 col-6 Zoom"><a><img class="img-fluid" :src="Image" /></a></div>
     </div>
   </div>
+  
+   <vue-easy-lightbox
+        :visible="visible"
+        :index="index"
+        :imgs="Images"
+        @hide="handleHide"
+      ></vue-easy-lightbox>
 
       <footer class="mastfoot mt-auto">
         <div class="inner">
@@ -28,26 +35,31 @@
 </template>
 
 <script>
-
-
-
 export default {
-  name: 'Header',
-  components: {
-
-  },
   data(){
     return {
       Images: [
-          {Thumbnail: 'https://vuejsbook.com/img/vuejs/img1.jpg'},
-          {Thumbnail: 'https://vuejsbook.com/img/vuejs/img2.jpg'},
-          {Thumbnail: 'https://vuejsbook.com/img/vuejs/img3.jpg'},
-          {Thumbnail: 'https://vuejsbook.com/img/vuejs/img4.jpg'},
-          {Thumbnail: 'https://vuejsbook.com/img/vuejs/img5.jpg'},
-          {Thumbnail: 'https://vuejsbook.com/img/vuejs/img6.jpg'},
-          {Thumbnail: 'https://vuejsbook.com/img/vuejs/img7.jpg'},
-          {Thumbnail: 'https://vuejsbook.com/img/vuejs/img8.jpg'}
-      ]
+        'https://vuejsbook.com/img/vuejs/img1.jpg',
+        'https://vuejsbook.com/img/vuejs/img2.jpg',
+        'https://vuejsbook.com/img/vuejs/img3.jpg',
+        'https://vuejsbook.com/img/vuejs/img4.jpg',
+        'https://vuejsbook.com/img/vuejs/img5.jpg',
+        'https://vuejsbook.com/img/vuejs/img6.jpg',
+        'https://vuejsbook.com/img/vuejs/img7.jpg',
+        'https://vuejsbook.com/img/vuejs/img8.jpg'
+      ],
+      visible: false,
+      index: 0
+    }
+  }, 
+
+  methods: {
+    show (index) {
+      this.index = index
+      this.visible = true
+    },
+    handleHide () {
+      this.visible = false
     }
   },
 }
@@ -64,15 +76,10 @@ img {
     box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.2);
     margin-bottom:20px;
   }
-
-  img:hover {
-    filter: gray; /* IE6-9 */
-    -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
-  }
-
+  
   .Zoom img{
   cursor: pointer;
-  transition: transform 2s, filter 1.2s ease-in-out;
+  transition: transform 1s, filter 1s ease-in-out;
   transform-origin: center center;
   filter: brightness(50%);
   }

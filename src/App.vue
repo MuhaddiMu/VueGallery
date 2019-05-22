@@ -1,15 +1,15 @@
 <template>
-  <Header></Header>
+  <AppHeader v-cloak></AppHeader>
 </template>
 
 <script>
 
-import Header from "@/components/Header.vue";
+import AppHeader from "@/components/Header.vue";
 
 export default {
   name: 'app',
   components: {
-    Header,
+    AppHeader,
   }
 }
 </script>
