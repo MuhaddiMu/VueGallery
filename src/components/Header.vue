@@ -19,6 +19,7 @@
         :index="index"
         :imgs="Images"
         @hide="handleHide"
+        class="Display"
       ></vue-easy-lightbox>
 
       <footer class="mastfoot mt-auto">
@@ -88,4 +89,6 @@ img {
     filter: brightness(100%);
     transform: scale(1.05);
   }
+
+  .Display{ display:block!important; }
 </style>
