@@ -8,6 +8,8 @@
         </div>
       </header>
 
+<input type="text" name="Search" placeholder="Search Image">
+
   <div class="container mt-4">
     <div class="row">
       <div v-for="(Image, index) in Images" :key="index" @click="() => show(index)" class="col-md-3 col-sm-4 col-6 Zoom"><a><img class="img-fluid" :src="Image" /></a></div>
