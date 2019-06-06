@@ -5,11 +5,10 @@
       <header class="masthead mb-auto text-center">
         <div class="inner">
           <h3 class="">Image Gallery Vue.Js</h3>
+      <center><div class="col-md-3"><input class="form-control-sm form-control" type="text" name="Search" placeholder="Search Image"></div></center>
+
         </div>
       </header>
-
-<input type="text" name="Search" placeholder="Search Image">
-
   <div class="container mt-4">
     <div class="row">
       <div v-for="(Image, index) in Images" :key="index" @click="() => show(index)" class="col-md-3 col-sm-4 col-6 Zoom"><a><img class="img-fluid" :src="Image" /></a></div>
