@@ -5,8 +5,11 @@
       <header class="masthead mb-auto text-center">
         <div class="inner">
           <h3 class="">Image Gallery Vue.Js</h3>
-      <center><div class="col-md-3"><input class="form-control-sm form-control" type="text" name="Search" placeholder="Search Image"></div></center>
-
+          <center><div class="col-md-3">
+            <form method="POST" class="form-inline">
+              <input class="ml-3 form-control-sm form-control" type="text" name="Search" placeholder="Search Image"><button class="ml-2 btn btn-primary btn-sm"><i class="fas fa-search"></i></button>
+            </form>
+          </div></center>
         </div>
       </header>
   <div class="container mt-4">
@@ -71,6 +74,7 @@ export default {
 <style>
 @import 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css';
 @import 'https://getbootstrap.com/docs/4.0/examples/cover/cover.css';
+@import 'https://use.fontawesome.com/releases/v5.8.2/css/all.css';
 
 img {
     -webkit-box-shadow: 0px 1px 6px 1px rgba(0,0,0,0.2);
