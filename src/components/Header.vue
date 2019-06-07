@@ -26,7 +26,7 @@
 				<vue-easy-lightbox
         :visible="visible"
         :index="index"
-        :imgs="images.urls"
+        :imgs="images"
         @hide="handleHide"
         class="Display"
       ></vue-easy-lightbox>
@@ -74,7 +74,6 @@ export default {
     },
   methods: {
    updateQuery() {
-    console.log(this.query);
 		doQuery(this); 
   },
     show (index) {
