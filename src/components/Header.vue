@@ -5,10 +5,8 @@
       <header class="masthead mb-auto text-center">
         <div class="inner">
           <h3 class="">Image Gallery Vue.Js</h3>
-          <center><div class="col-md-3">
-            <form method="POST" class="form-inline">
-              <input class="ml-3 form-control-sm form-control" type="text" name="Search" placeholder="Search Image"><button class="ml-2 btn btn-primary btn-sm"><i class="fas fa-search"></i></button>
-            </form>
+          <center><div class="col-md-3 form-inline">
+              <input v-model="Query" class="ml-3 form-control-sm form-control" type="text" name="Search" placeholder="Search Image"><button class="ml-2 btn btn-primary btn-sm"><i class="fas fa-search"></i></button>
           </div></center>
         </div>
       </header>
