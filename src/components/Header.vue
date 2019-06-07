@@ -1,62 +1,82 @@
 <template>
-    <div class="text-center">
-      
-    <div class="d-flex h-100 p-3 mx-auto flex-column">
-      <header class="masthead mb-auto text-center">
-        <div class="inner">
-          <h3 class="">Image Gallery Vue.Js</h3>
-          <center><div class="col-md-3 form-inline">
-              <input class="ml-3 form-control-sm form-control" type="text" name="Search" placeholder="Search Image"><button class="ml-2 btn btn-primary btn-sm"><i class="fas fa-search"></i></button>
-          </div></center>
-        </div>
-      </header>
-  <div class="container mt-4">
-    <div class="row">
-      <div v-for="(Image, index) in Images" :key="index" @click="() => show(index)" class="col-md-3 col-sm-4 col-6 Zoom"><a><img class="img-fluid" :src="Image" /></a></div>
-    </div>
-  </div>
-  
-   <vue-easy-lightbox
+	<div class="text-center">
+		<div class="d-flex h-100 p-3 mx-auto flex-column">
+			<header class="masthead mb-auto text-center">
+				<div class="inner">
+					<h3 class="">Image Gallery Vue.Js</h3>
+					<div class="d-flex justify-content-center h-100">
+						<div class="searchbar">
+							<input v-model="query" @keyup.enter="updateQuery" class="search_input" type="text" name="" placeholder="Search...">
+								<a href="#" @click="updateQuery" class="search_icon">
+									<i class="fas fa-search"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				</header>
+				<div class="container mt-4">
+					<div class="row">
+						<div v-cloak v-for="(image, index) in images" :key="index" @click="() => show(index)" class="col-md-3 col-sm-4 col-6 Zoom">
+							<a>
+								<img class="img-fluid" :src="image.urls.small" />
+							</a>
+						</div>
+					</div>
+				</div>
+				<vue-easy-lightbox
         :visible="visible"
         :index="index"
-        :imgs="Images"
+        :imgs="images.urls"
         @hide="handleHide"
         class="Display"
       ></vue-easy-lightbox>
+				<footer class="mastfoot mt-auto">
+					<div class="inner">
+						<p>Learning base project Vue Gallery, by 
+							<a href="https://muhaddis.info">Muhaddis</a>.
+						</p>
+					</div>
+				</footer>
+			</div>
+			<script2 src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script2>
+			<script2 src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script2>
+			<script2 src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script2>
+		</div>
+	</template>
+	<script>
 
-      <footer class="mastfoot mt-auto">
-        <div class="inner">
-          <p>Learning base project Vue Gallery, by <a href="https://muhaddis.info">Muhaddis</a>.</p>
-        </div>
-      </footer>
-    </div>
+var CLIENT_ID = "4ef3bf5b74026ce2dce008a076cbd52763f6b3c6b4583920ac70ebe462bf0bc1";
+function makeQuery(query) {
+  return "https://api.unsplash.com/photos/search/?query=" + query +  "&client_id=" + CLIENT_ID + "&per_page=8&orientation=landscape";
+}
 
-    <script2 src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script2>
-    <script2 src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script2>
-    <script2 src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script2>
-  </div>
-</template>
+function doQuery(self) {
+  window.fetch(makeQuery(self.query))
+  .then(function(res){
+    return res.json();
+  })
+  .then(function(res){
+    self.images = res;
+  }); 
+}
 
-<script>
 export default {
   data(){
     return {
-      Images: [
-        'https://vuejsbook.com/img/vuejs/img1.jpg',
-        'https://vuejsbook.com/img/vuejs/img2.jpg',
-        'https://vuejsbook.com/img/vuejs/img3.jpg',
-        'https://vuejsbook.com/img/vuejs/img4.jpg',
-        'https://vuejsbook.com/img/vuejs/img5.jpg',
-        'https://vuejsbook.com/img/vuejs/img6.jpg',
-        'https://vuejsbook.com/img/vuejs/img7.jpg',
-        'https://vuejsbook.com/img/vuejs/img8.jpg'
-      ],
+      images: [],
+      query: 'Landscape',
       visible: false,
-      index: 0
+      index: 0,
     }
   }, 
-
+    ready: function() {
+      doQuery(this);
+    },
   methods: {
+   updateQuery() {
+    console.log(this.query);
+		doQuery(this); 
+  },
     show (index) {
       this.index = index
       this.visible = true
@@ -67,9 +87,8 @@ export default {
   },
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+	<!-- Add "scoped" attribute to limit CSS to this component only -->
+	<style>
 @import 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css';
 @import 'https://getbootstrap.com/docs/4.0/examples/cover/cover.css';
 @import 'https://use.fontawesome.com/releases/v5.8.2/css/all.css';
@@ -94,4 +113,47 @@ img {
   }
 
   .Display{ display:block!important; }
+
+.searchbar{
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 60px;
+    background-color: #353b48;
+    border-radius: 30px;
+    padding: 10px;
+    }
+
+    .search_input{
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color:transparent;
+    line-height: 40px;
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_input{
+    padding: 0 10px;
+    width: 450px;
+    caret-color:red;
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_icon{
+    background: white;
+    color: #e74c3c;
+    }
+
+    .search_icon{
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color:white;
+    }
 </style>
