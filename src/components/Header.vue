@@ -66,7 +66,7 @@ function doQuery(self) {
       self.LBox = LBoxImgs;
     }
     
-  }); 
+  });
 }
 
 export default {
@@ -79,13 +79,9 @@ export default {
       index: 0,
     }
   },
-    ready: function() {
-      doQuery(this);
-    },
   methods: {
    updateQuery() {
     doQuery(this); 
-    this.LBox = [];
   },
     show (index) {
       this.index = index
@@ -94,6 +90,9 @@ export default {
     handleHide () {
       this.visible = false
     }
+  },
+  created() {
+    doQuery(this);
   },
   computed: {
     lightboxImageList() {
