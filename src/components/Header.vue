@@ -44,7 +44,7 @@
    </div>
 </template>
 <script>
-   var CLIENT_ID = "4ef3bf5b74026ce2dce008a076cbd52763f6b3c6b4583920ac70ebe462bf0bc1";
+   var CLIENT_ID = "YOUR_UNSPLASH_ACCESS_KEY";
    function makeQuery(query) {
      return "https://api.unsplash.com/photos/search/?query=" + query +  "&client_id=" + CLIENT_ID + "&per_page=8&orientation=landscape";
    }
