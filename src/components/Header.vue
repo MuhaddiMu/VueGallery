@@ -62,7 +62,6 @@ function doQuery(self) {
     var LBox = res;
     var LBoxImgs = [];
     for(var i = 0; i < LBox.length; i++){
-      console.log(LBox[i].urls.full);
       LBoxImgs[i] = LBox[i].urls.full;
       self.LBox = LBoxImgs;
     }
