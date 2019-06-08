@@ -26,7 +26,7 @@
 				<vue-easy-lightbox
         :visible="visible"
         :index="index"
-        :imgs="images"
+        :imgs="lightboxImageList"
         @hide="handleHide"
         class="Display"
       ></vue-easy-lightbox>
@@ -84,6 +84,14 @@ export default {
       this.visible = false
     }
   },
+  computed: {
+    lightboxImageList() {
+      const images = [...this.images];
+      return images.map(imgObj => {
+        return imgObj.urls.full || ''
+      })
+    }
+  }
 }
 </script>
 	<!-- Add "scoped" attribute to limit CSS to this component only -->
