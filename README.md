@@ -3,6 +3,8 @@
 
 # Vue Gallery
 Vue Gallery is minimal design photo search one-page app developed using Vue.js which uses Unsplash JSON APIs for photo search and [Lightbox](https://github.com/XiongAmao/vue-easy-lightbox).
+
+
 See [Live](https://muhaddimu.github.io/VueGallery/) here: [https://muhaddimu.github.io/VueGallery/](https://muhaddimu.github.io/VueGallery/)
 ## Project setup
 Compiles and hot-reloads for development
@@ -28,4 +30,6 @@ Update your Unsplash ACCESS_KEY in [Header.vue](https://github.com/MuhaddiMu/Vue
 ```
 
 ## Contributions
-Any suggestions, questions & feedbacks are welcome. Feel free to contribute the more functionality :)
+Any suggestions, questions & feedbacks are welcome.
+
+Feel free to contribute the more functionality :)
