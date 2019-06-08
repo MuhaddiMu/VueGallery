@@ -3,10 +3,10 @@
 		<div class="d-flex h-100 p-3 mx-auto flex-column">
 			<header class="masthead mb-auto text-center">
 				<div class="inner">
-					<h3 class="">Image Gallery Vue.Js</h3>
+					<h3 class="">Unsplash Image Gallery</h3>
 					<div class="d-flex justify-content-center h-100">
 						<div class="searchbar">
-							<input v-model="query" @keyup.enter="updateQuery" class="search_input" type="text" name="" placeholder="Search...">
+							<input v-model="query" @keyup.enter="updateQuery" class="search_input" type="text" autofocus name="" placeholder="Search Image">
 								<a href="#" @click="updateQuery" class="search_icon">
 									<i class="fas fa-search"></i>
 								</a>
@@ -23,13 +23,15 @@
 						</div>
 					</div>
 				</div>
-				<vue-easy-lightbox
+
+      <vue-easy-lightbox
         :visible="visible"
         :index="index"
-        :imgs="lightboxImageList"
+        :imgs="LBox"
         @hide="handleHide"
-        class="Display"
-      ></vue-easy-lightbox>
+        class="Display">
+      </vue-easy-lightbox>
+
 				<footer class="mastfoot mt-auto">
 					<div class="inner">
 						<p>Learning base project Vue Gallery, by 
@@ -57,6 +59,14 @@ function doQuery(self) {
   })
   .then(function(res){
     self.images = res;
+    var LBox = res;
+    var LBoxImgs = [];
+    for(var i = 0; i < LBox.length; i++){
+      console.log(LBox[i].urls.full);
+      LBoxImgs[i] = LBox[i].urls.full;
+      self.LBox = LBoxImgs;
+    }
+    
   }); 
 }
 
@@ -64,17 +74,19 @@ export default {
   data(){
     return {
       images: [],
+      LBox: [],
       query: 'Landscape',
       visible: false,
       index: 0,
     }
-  }, 
+  },
     ready: function() {
       doQuery(this);
     },
   methods: {
    updateQuery() {
-		doQuery(this); 
+    doQuery(this); 
+    this.LBox = [];
   },
     show (index) {
       this.index = index
@@ -95,7 +107,7 @@ export default {
 }
 </script>
 	<!-- Add "scoped" attribute to limit CSS to this component only -->
-	<style>
+	<style scoped>
 @import 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css';
 @import 'https://getbootstrap.com/docs/4.0/examples/cover/cover.css';
 @import 'https://use.fontawesome.com/releases/v5.8.2/css/all.css';
@@ -138,14 +150,14 @@ img {
     width: 0;
     caret-color:transparent;
     line-height: 40px;
-    transition: width 0.4s linear;
+    transition: width 0.3s linear;
     }
 
     .searchbar:hover > .search_input{
     padding: 0 10px;
-    width: 450px;
+    width: 250px;
     caret-color:red;
-    transition: width 0.4s linear;
+    transition: width 0.3s linear;
     }
 
     .searchbar:hover > .search_icon{
